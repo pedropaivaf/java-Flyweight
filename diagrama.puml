@@ -1,0 +1,41 @@
+@startuml DiagramaDeClasses
+
+skinparam classBackgroundColor White
+skinparam classBorderColor Black
+skinparam arrowColor Black
+skinparam linetype ortho
+hide fields
+hide circle
+
+class TipoArvore {
+    + TipoArvore(nome, cor, textura)
+    + getNome() : String
+    + getCor() : String
+    + getTextura() : String
+}
+
+class TipoArvoreFactory {
+    + {static} obter(nome, cor, textura) : TipoArvore
+    + {static} totalTiposCriados() : int
+    + {static} limparCache() : void
+}
+
+class Arvore {
+    + Arvore(x, y, tipo)
+    + getX() : int
+    + getY() : int
+    + getTipo() : TipoArvore
+}
+
+class Floresta {
+    + plantarArvore(x, y, nome, cor, textura) : void
+    + getArvores() : List<Arvore>
+    + totalArvores() : int
+}
+
+TipoArvoreFactory --> TipoArvore : cria/cacheia
+Arvore --> "1" TipoArvore : compartilha
+Floresta --> "*" Arvore : gerencia
+Floresta ..> TipoArvoreFactory : usa
+
+@enduml
