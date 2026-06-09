@@ -10,14 +10,6 @@ Uma floresta pode ter dezenas de milhares de árvores. Cada árvore tem posiçã
 
 **Flyweight** — `TipoArvore` encapsula o estado compartilhado (nome, cor, textura). `TipoArvoreFactory` mantém um cache e retorna o mesmo objeto para espécies já criadas. Cada `Arvore` guarda apenas sua posição e uma referência ao tipo compartilhado. A `Floresta` planta quantas árvores quiser com muito menos objetos na memória.
 
-## Como rodar
-
-```bash
-cd java-Flyweight
-mvn test
-```
-
-6 testes passando.
 
 ## Diagrama de classes
 
